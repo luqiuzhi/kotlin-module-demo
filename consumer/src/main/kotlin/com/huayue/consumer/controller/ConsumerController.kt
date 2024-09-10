@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController
 class ConsumerController {
     @GetMapping("/test")
     fun testFunExecution(): String {
-        val result = executeFun("testApi", "producer", "tdwadawda")
+        val result = executeFun("testApi", "producer", "from consumer")
         return result.toString()
     }
 }

@@ -1,4 +1,4 @@
-package com.huayue.core
+package com.huayue.core.module
 
 /**
  * @author huay@cecjiutian.com

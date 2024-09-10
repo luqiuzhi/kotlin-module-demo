@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":function-core"))
+    implementation(project(":core"))
     implementation(project(":producer"))
     // spring boot web
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.0")

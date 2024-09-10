@@ -1,19 +1,22 @@
-package com.huayue.core.function
+package com.huayue.core
 
 import cn.hutool.core.util.ClassUtil
 import cn.hutool.core.util.StrUtil
 import cn.hutool.extra.spring.SpringUtil
+import cn.hutool.setting.yaml.YamlUtil
+import com.huayue.core.function.Fun
+import com.huayue.core.function.FunCache
+import com.huayue.core.function.FunMeta
+import com.huayue.core.module.BootModules
 import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.servlet.mvc.method.RequestMappingInfo
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping
 import java.lang.reflect.Method
 
-/** 基于注解Fun定义数据结构进行存储
+/**
  * @author huay@cecjiutian.com
- * @date 2024/9/9
+ * @date 2024/9/10
  */
-data class FunMeta(val packagePath: String, val className: String, val funName: String, val funAnnotation: Fun)
-
 // 在应用启动时，扫描路径下使用了@Fun注解的类，并返回一个FunMeta列表，存储到FunCache中
 fun initFunMeta(packagePath: String) {
     val funMetaList = mutableListOf<FunMeta>()
@@ -40,4 +43,13 @@ fun registerFunMeta(funMeta: FunMeta, method: Method) {
     val path = "/${funMeta.funAnnotation.module}/${funMeta.funName}"
     val request = RequestMappingInfo.paths(path).methods(RequestMethod.POST).build()
     requestRegister.registerMapping(request, StrUtil.lowerFirst(funMeta.className), method)
+}
+
+fun initBootModule() {
+    val config = YamlUtil.loadByPath("application.yaml")
+    val bootModules = config["modules"]
+    bootModules?.let {
+        val modules = it as ArrayList<String>
+        BootModules.addBootModules(modules.toSet())
+    }
 }

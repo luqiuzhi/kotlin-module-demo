@@ -1,6 +1,6 @@
 package com.huayue.producer
 
-import com.huayue.core.Module
+import com.huayue.core.module.Module
 
 
 /**

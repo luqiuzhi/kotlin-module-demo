@@ -10,7 +10,7 @@ repositories {
 }
 
 dependencies {
-    implementation(project(":function-core"))
+    implementation(project(":core"))
     testImplementation(kotlin("test"))
 }
 

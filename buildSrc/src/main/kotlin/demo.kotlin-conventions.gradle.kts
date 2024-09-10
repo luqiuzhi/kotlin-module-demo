@@ -3,20 +3,15 @@ plugins {
 }
 
 group = "com.huayue"
-version = "unspecified"
+version = "1.0"
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation(project(":core"))
-    implementation(project(":producer-api"))
-    // spring boot web
     implementation("org.springframework.boot:spring-boot-starter-web:3.2.0")
-    implementation("org.springframework.boot:spring-boot-starter-actuator:3.2.0")
-    implementation("com.alibaba.cloud:spring-cloud-starter-alibaba-nacos-discovery:2023.0.1.2")
-
+    implementation("cn.hutool:hutool-all:5.8.26")
     testImplementation(kotlin("test"))
 }
 
