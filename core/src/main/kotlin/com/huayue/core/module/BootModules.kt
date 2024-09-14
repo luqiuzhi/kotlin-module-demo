@@ -5,6 +5,7 @@ package com.huayue.core.module
  * @date 2024/9/10
  */
 object BootModules {
+    // TODO: huay 2024/9/12 保存当前的组件运行信息，如果是使用SOFAArk架构，则需要从内存中获取
     private val bootModules: MutableSet<String> = mutableSetOf()
 
     fun addBootModule(module: String) {

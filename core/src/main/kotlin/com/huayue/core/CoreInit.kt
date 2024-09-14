@@ -26,10 +26,12 @@ fun initFunMeta(packagePath: String) {
         val methods = clazz.methods
         methods.forEach { method ->
             val funAnnotation = method.getAnnotation(Fun::class.java)
+            // TODO: huay 2024/9/12 针对需要生成远程服务的接口，提供一个逻辑判断
             if (funAnnotation != null) {
                 val funMeta = FunMeta(clazz.packageName, clazz.simpleName, method.name, funAnnotation)
                 funMetaList.add(funMeta)
                 // 动态注册一个spring接口
+                // TODO: huay 2024/9/12 完善注册方式，是否使用Spring的方式
                 registerFunMeta(funMeta, method)
             }
         }

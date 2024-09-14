@@ -5,3 +5,4 @@ package com.huayue.core.function
  * @date 2024/9/9
  */
 data class FunMeta(val packagePath: String, val className: String, val funName: String, val funAnnotation: Fun)
+// TODO: huay 2024/9/12 确定当前的元数据结构
